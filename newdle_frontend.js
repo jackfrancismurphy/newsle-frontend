@@ -10,6 +10,13 @@ const HEADLINE_ARRAY_LOWER = API_INFO.headline.toLowerCase().split(" ")
 
 const RESULT_PTAG = document.getElementById("result_text")
 
+
+function onSubmit(){
+    checkGuess()
+    winningConditions()
+}
+
+
 function checkGuess() {
     const PLAYER_GUESS = document.getElementById("guess_box").value.toLowerCase()
 
@@ -24,4 +31,11 @@ function checkGuess() {
     } else {
         RESULT_PTAG.innerText = CROSS_STRING
     };
+}
+
+function winningConditions(){
+    const CONGRATS_TAG = document.getElementById("congratulations_text")
+    if (document.getElementById("presented_headline").innerText === API_INFO.headline){
+        CONGRATS_TAG.innerText = "Congratulations!"
+    }  
 }
