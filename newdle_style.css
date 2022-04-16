@@ -1,0 +1,64 @@
+body {
+    margin: 0px;
+  }
+
+#heading{
+    
+}
+
+/* Backgrounds */
+#first_background{
+    position: absolute;
+    width: 100vw;
+    height: 100vw;
+    top: 0px;
+    left: 0;
+    right: 0px;
+    width: 94vw;
+    background:slategray;
+    z-index: -15;
+}
+
+#second_background{
+    position: absolute;
+    width: 85vw;
+    height: 85vw;
+    top: 4vw;
+    left: 1vw;
+    right: 1vw;
+    background:black;
+    z-index: -13;
+}
+
+#foreground{
+    width: 70vw;
+    height: 70vw;
+    position: absolute;
+    top: 8vw;
+    left: 5vw;
+    right: 1vw;
+    background:teal;
+    z-index: -5;
+
+}
+
+/* Information in foreground */
+
+#instruction{
+
+}
+#congratulations_text{
+
+}
+#presented_headline{
+
+}
+#guess_box{
+
+}
+#submit_button{
+
+}
+#result_text{
+    
+}

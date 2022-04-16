@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href = "newdle_style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Newdle</title>
+</head>
+<body>
+    <!-- objects for background -->
+    <div class="backgrounds">
+        <div id="first_background"></div>
+        <div id="second_background"></div>
+        <div id="foreground">
+            <p id= "instruction"> instructions </p>
+
+            <h1 id="heading" style="text-align:center">Newdle</h1>
+            <p id= "congratulations_text"> Congratulations! </p>
+
+            <h2 id="presented_headline"></h2>
+
+            <input type="text" id="guess_box" name="guess"><br><br>
+            <button type="button" id="submit_button" onclick="onSubmit()">Guess</button> 
+            <p id= "result_text">&#10060;</p>
+        </div>
+    </div>
+ 
+    <script src="newdle_frontend.js"></script> 
+</body>
+</html> 
