@@ -1,41 +1,68 @@
+/* Internal values */
 
-const TICK_STRING = "tick for now"
+// To be changed with emojis in time.
+let headlineArray = []
 
-const CROSS_STRING = "cross for now"
-
-const API_INFO = {headline: "Boris Johnson says tens of thousands could be sent to Rwanda under relocation plan for asylum seekers - UK politics live - The Guardian", scrambled_headline: "Bsrio onnJsoh asys snte fo onduathss uolcd be nset ot awnaRd rneud erolniocta pnla rof mluyas sesekre - UK iosplcti ievl - eTh andiuarG"}
-
-const HEADLINE_ARRAY = API_INFO.headline.split(" ")
-const HEADLINE_ARRAY_LOWER = API_INFO.headline.toLowerCase().split(" ")
+let headlineArrayLower = [] 
 
 const RESULT_PTAG = document.getElementById("result_text")
 
+const GUESS_BOX = document.getElementById("guess_box")
+
+const GUESS_BUTTON = document.getElementById("submit_button")
+
+/* Making boxes unavailable */
+
+GUESS_BOX.disabled = true;
+GUESS_BUTTON.disabled = true;
+
+
+/* External values */
+
+/* fetch initiates the process of getting the information from the API
+.then(api_response) returns the promise of data from the URL. (It takes time to get the data)
+.then(json_response) returns the data in .json format (it takes time to get the data)
+Both retieving data and converting data takes time. That's why .then exists...
+it executes when the data has actually been procured/converted */ 
+fetch('http://localhost:5000/Game_info')
+.then(api_response => {return api_response.json()})
+.then(json_response => {
+    getHeadlines(json_response)
+});
+
+function getHeadlines(headlines_json){
+    document.getElementById("presented_headline").innerText = headlines_json.scrambled_headline
+    headlineArray = headlines_json.headline.split(" ")
+    headlineArrayLower = headlines_json.headline.toLowerCase().split(" ")
+    GUESS_BOX.disabled = false;
+    GUESS_BUTTON.disabled = false;
+}
 
 function onSubmit(){
     checkGuess()
     winningConditions()
 }
 
-
 function checkGuess() {
-    const PLAYER_GUESS = document.getElementById("guess_box").value.toLowerCase()
+    const PLAYER_GUESS = GUESS_BOX.value.toLowerCase().trim();
 
+    if (headlineArrayLower.includes(PLAYER_GUESS)){
+        const GUESS_POSITION = headlineArrayLower.indexOf(PLAYER_GUESS)
+        var updatedHeadline = document.getElementById("presented_headline").innerText.split(" ")
+        updatedHeadline[GUESS_POSITION] = headlineArray[GUESS_POSITION]
 
-    if (HEADLINE_ARRAY_LOWER.includes(PLAYER_GUESS) == true){
-        RESULT_PTAG.innerText = TICK_STRING
-        const GUESS_POSITION = HEADLINE_ARRAY_LOWER.indexOf(PLAYER_GUESS)
-        var updated_scramble = document.getElementById("presented_headline").innerText.split(" ")
-        updated_scramble[GUESS_POSITION] = HEADLINE_ARRAY[GUESS_POSITION]
         // below we are changing the inner text of the <h2> element on the html file.  
-        document.getElementById("presented_headline").innerText = updated_scramble.join(" ")
+        document.getElementById("presented_headline").innerText = updatedHeadline.join(" ")
+
     } else {
-        RESULT_PTAG.innerText = CROSS_STRING
-    };
+        RESULT_PTAG.innerText = "❌"
+        // Might need to set some attribute where this becomes visible, rather than setting the text
+    }
 }
 
+
 function winningConditions(){
-    const CONGRATS_TAG = document.getElementById("congratulations_text")
-    if (document.getElementById("presented_headline").innerText === API_INFO.headline){
-        CONGRATS_TAG.innerText = "Congratulations!"
+    if (document.getElementById("presented_headline").innerText === headlineArray.join(" ")){
+        document.getElementById("congratulations_text").innerText = "🎊📰 Congratulations! 📰🎊"
     }  
 }
