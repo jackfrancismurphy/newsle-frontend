@@ -1,10 +1,6 @@
 /* Internal values */
 
 // To be changed with emojis in time.
-const TICK_STRING = "tick for now"
-
-const CROSS_STRING = "cross for now"
-
 let headlineArray = []
 
 let headlineArrayLower = [] 
@@ -13,7 +9,7 @@ const RESULT_PTAG = document.getElementById("result_text")
 
 const GUESS_BOX = document.getElementById("guess_box")
 
-const GUESS_BUTTON = document.getElementById("button")
+const GUESS_BUTTON = document.getElementById("submit_button")
 
 /* Making boxes unavailable */
 
@@ -48,10 +44,9 @@ function onSubmit(){
 }
 
 function checkGuess() {
-    const PLAYER_GUESS = GUESS_BOX.value.toLowerCase()
+    const PLAYER_GUESS = GUESS_BOX.value.toLowerCase().trim();
 
     if (headlineArrayLower.includes(PLAYER_GUESS)){
-        RESULT_PTAG.innerText = TICK_STRING
         const GUESS_POSITION = headlineArrayLower.indexOf(PLAYER_GUESS)
         var updatedHeadline = document.getElementById("presented_headline").innerText.split(" ")
         updatedHeadline[GUESS_POSITION] = headlineArray[GUESS_POSITION]
@@ -60,13 +55,14 @@ function checkGuess() {
         document.getElementById("presented_headline").innerText = updatedHeadline.join(" ")
 
     } else {
-        RESULT_PTAG.innerText = CROSS_STRING
+        RESULT_PTAG.innerText = "❌"
+        // Might need to set some attribute where this becomes visible, rather than setting the text
     }
 }
 
 
 function winningConditions(){
     if (document.getElementById("presented_headline").innerText === headlineArray.join(" ")){
-        document.getElementById("congratulations_text").innerText = "Congratulations!"
+        document.getElementById("congratulations_text").innerText = "🎊📰 Congratulations! 📰🎊"
     }  
 }
