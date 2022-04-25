@@ -1,12 +1,15 @@
 body {
+    position: absolute;
     min-height: 100vh;
     margin: 0px;
+    z-index: -4;
   }
 
 
 /* Backgrounds */
 #first_background{
     position: absolute;
+    width: 50vw;
     top: 0px;
     left: 0;
     bottom: 0px;
@@ -18,7 +21,7 @@ body {
 #second_background{
     position: absolute;
     background:black;
-    top: 2vh;
+    top: 1.75vh;
     height: 97vh;
     width: 94vw;
     left: 2vw;
@@ -34,7 +37,6 @@ body {
     background:rgb(94, 82, 194);
     z-index: -1;
     text-align: center;
-
 }
 
 /* Information in foreground */
@@ -45,42 +47,54 @@ body {
 }
 
 #heading{
-    letter-spacing: 3vw;
-    font-size: 13vw;
-    text-align:inherit;
-    position: relative;
-    left: 0vw;
+    position: absolute;
+    letter-spacing: 1rem;
+    font-size: 3rem;
+    top: 6vh;
     z-index: 0;
+    margin: 0;
+    left: 11vw;
 }
 
 #congratulations_text{
+    position: absolute;
     font-size: 5vw;
     font-weight: bold;
     z-index: 0;
 }
 #presented_headline{
+    position: absolute;
     line-height: 8vh;
-    font-size: 7vw;
+    font-size: 2rem;
     padding: 4vw;
     text-align: justify;
     z-index: 0;
+    margin: 0;
+    top: 15vh;
+}
+#box_and_cross{
+    position: absolute;
+    left: 26vw;
+    bottom: 28vh;
 }
 #guess_box{
-    position: absolute;
-    top: 1vh;
-    width: 36vw;
-    height: 4vh;
     position: relative;
-    z-index: 0;
-}
-#submit_button{
-    font-size: 6vw;
+    width: 32vw;
+    height: 4vh;
     z-index: 0;
 }
 #cross{
     position: relative;
     font-size: 130%;
-    left: 26vw;
-    bottom: 8.3vh;
+    width: 4vw;
+    left: 43vw;
     z-index: 0;
+    text-align: right;
+    bottom: 6.2vh;
+}
+#submit_button{
+    position: absolute;
+    bottom: 10vh;
+    z-index: 0;
+    max-width: 10vh;
 }
