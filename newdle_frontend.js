@@ -1,15 +1,16 @@
 /* Internal values */
 
-// To be changed with emojis in time.
 let headlineArray = []
 
 let headlineArrayLower = [] 
 
-const RESULT_PTAG = document.getElementById("result_text")
+const RESULT_PTAG = document.getElementById("cross")
 
 const GUESS_BOX = document.getElementById("guess_box")
 
 const GUESS_BUTTON = document.getElementById("submit_button")
+
+const zeroth_millisec = new Date().getTime()
 
 /* Making boxes unavailable */
 
@@ -30,17 +31,23 @@ fetch('http://localhost:5000/Game_info')
     getHeadlines(json_response)
 });
 
+// Main function
+
+function onSubmit(){
+    checkGuess()
+    winningConditions()
+}
+
+// Functions otherwise
+
 function getHeadlines(headlines_json){
     document.getElementById("presented_headline").innerText = headlines_json.scrambled_headline
     headlineArray = headlines_json.headline.split(" ")
     headlineArrayLower = headlines_json.headline.toLowerCase().split(" ")
     GUESS_BOX.disabled = false;
     GUESS_BUTTON.disabled = false;
-}
 
-function onSubmit(){
-    checkGuess()
-    winningConditions()
+    console.log(headlines_json.headline);
 }
 
 function checkGuess() {
@@ -60,9 +67,21 @@ function checkGuess() {
     }
 }
 
-
 function winningConditions(){
     if (document.getElementById("presented_headline").innerText === headlineArray.join(" ")){
-        document.getElementById("congratulations_text").innerText = "🎊📰 Congratulations! 📰🎊"
+        const final_millisec = new Date().getTime()
+        document.getElementById("congratulations_text").innerText = `🎊📰 Congratulations! 📰🎊 \n Time: ${time_translator(zeroth_millisec,final_millisec)} minutes`
+        // var final_millisec = new Date().getTime(); Can you define a variable in the way done below?
     }  
+}
+
+function time_translator(millisx_start, millisx_end){
+    
+    difference = millisx_end - millisx_start
+
+    var result_hrs = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var result_mins = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    var result_secs = Math.floor((difference % (1000 * 60)) / 1000);
+
+    return result_mins
 }
