@@ -1,9 +1,13 @@
 # newdle-frontend
 
-To run, run "python -m http.server" on the front end
+To run, run "python -m http.server" from the root of the repo.
 
 run the newdle.api on the back end, too.
 
 ## Current Address 
 
-http://18.133.134.53:8000/
+http://localhost:8000/
+
+API url
+
+http://localhost:5000/Game_info
