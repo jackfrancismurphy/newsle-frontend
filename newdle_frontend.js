@@ -54,6 +54,7 @@ function checkGuess() {
     const PLAYER_GUESS = GUESS_BOX.value.toLowerCase().trim();
 
     if (headlineArrayLower.includes(PLAYER_GUESS)){
+        RESULT_PTAG.innerText = ""
         const GUESS_POSITION = headlineArrayLower.indexOf(PLAYER_GUESS)
         var updatedHeadline = document.getElementById("presented_headline").innerText.split(" ")
         updatedHeadline[GUESS_POSITION] = headlineArray[GUESS_POSITION]
