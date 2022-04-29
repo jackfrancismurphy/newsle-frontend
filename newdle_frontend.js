@@ -54,9 +54,11 @@ function checkGuess() {
     const PLAYER_GUESS = GUESS_BOX.value.toLowerCase().trim();
 
     if (headlineArrayLower.includes(PLAYER_GUESS)){
-        const GUESS_POSITION = headlineArrayLower.indexOf(PLAYER_GUESS)
+        wordIndexes = getWordIndexes(headlineArrayLower,PLAYER_GUESS)
         var updatedHeadline = document.getElementById("presented_headline").innerText.split(" ")
-        updatedHeadline[GUESS_POSITION] = headlineArray[GUESS_POSITION]
+        for (i in wordIndexes){
+            updatedHeadline[i] = headlineArray[i]
+        }
 
         // below we are changing the inner text of the <h2> element on the html file.  
         document.getElementById("presented_headline").innerText = updatedHeadline.join(" ")
@@ -67,6 +69,14 @@ function checkGuess() {
     }
 }
 
+function getWordIndexes (headlineArray, guess){
+    var indexes = [], i = -1;
+    while (i = headlineArray.indexOf(guess, i+1) != -1){
+        indexes.push(i)
+        return indexes;
+    }
+}
+  
 function winningConditions(){
     if (document.getElementById("presented_headline").innerText === headlineArray.join(" ")){
         const final_millisec = new Date().getTime()
