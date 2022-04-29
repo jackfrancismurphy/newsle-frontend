@@ -54,6 +54,7 @@ function checkGuess() {
     const PLAYER_GUESS = GUESS_BOX.value.toLowerCase().trim();
 
     if (headlineArrayLower.includes(PLAYER_GUESS)){
+        RESULT_PTAG.innerText = ""
         const GUESS_POSITION = headlineArrayLower.indexOf(PLAYER_GUESS)
         var updatedHeadline = document.getElementById("presented_headline").innerText.split(" ")
         updatedHeadline[GUESS_POSITION] = headlineArray[GUESS_POSITION]
@@ -84,4 +85,32 @@ function time_translator(millisx_start, millisx_end){
     var result_secs = Math.floor((difference % (1000 * 60)) / 1000);
 
     return result_mins
+}
+
+function shareLink(){
+    var result_link = "fill in"
+
+    if (result_mins <5){
+        result_link = result_link + "⌛<5"
+    }
+
+    if (result_mins <= 5 && result_mins <7){
+        result_link = result_link + "⌛<7"
+    }
+    if (result_mins <= 7 && result_mins <11){
+        result_link = result_link + "⌛<10"
+    }
+    if (result_mins <= 11 && result_mins <15){
+        result_link = result_link + "⌛<15"
+    }
+ /*     Less than 20 minutes.
+    Greater than 20 minutes */
+
+
+
+    result_link.select();
+    result_link.setSelectionRange(0, 99999);
+
+    navigator.clipboard.writeText(result_link)
+    
 }
