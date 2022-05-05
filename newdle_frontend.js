@@ -40,6 +40,12 @@ function onSubmit(){
 
 // Functions otherwise
 
+GUESS_BOX.addEventListener("keypress", function(event){
+    if (event.key === "Enter"){
+        document.getElementById("submit_button").click();
+    }
+});
+
 function getHeadlines(headlines_json){
     document.getElementById("presented_headline").innerText = headlines_json.scrambled_headline
     headlineArray = headlines_json.headline.split(" ")
@@ -56,6 +62,7 @@ function checkGuess() {
     if (headlineArrayLower.includes(PLAYER_GUESS)){
         RESULT_PTAG.innerText = ""
         const GUESS_POSITION = headlineArrayLower.indexOf(PLAYER_GUESS)
+        GUESS_BOX.value = ""
         var updatedHeadline = document.getElementById("presented_headline").innerText.split(" ")
         updatedHeadline[GUESS_POSITION] = headlineArray[GUESS_POSITION]
 
