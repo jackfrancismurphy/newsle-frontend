@@ -4,6 +4,12 @@ let headlineArray = []
 
 let headlineArrayLower = [] 
 
+let link = ""
+
+let resultMins = 0
+
+let resultSecs = 0
+
 const RESULT_PTAG = document.getElementById("cross")
 
 const GUESS_BOX = document.getElementById("guess_box")
@@ -46,9 +52,11 @@ function getHeadlines(headlines_json){
     headlineArrayLower = headlines_json.headline.toLowerCase().split(" ")
     GUESS_BOX.disabled = false;
     GUESS_BUTTON.disabled = false;
-
+    // left in to quickly check headline when testing
     console.log(headlines_json.headline);
 }
+
+
 
 function checkGuess() {
     const PLAYER_GUESS = GUESS_BOX.value.toLowerCase().trim();
@@ -64,15 +72,16 @@ function checkGuess() {
 
     } else {
         RESULT_PTAG.innerText = "❌"
-        // Might need to set some attribute where this becomes visible, rather than setting the text
     }
 }
 
 function winningConditions(){
     if (document.getElementById("presented_headline").innerText === headlineArray.join(" ")){
         const final_millisec = new Date().getTime()
-        document.getElementById("congratulations_text").innerText = `🎊📰 Congratulations! 📰🎊 \n Time: ${time_translator(zeroth_millisec,final_millisec)} minutes`
-        // var final_millisec = new Date().getTime(); Can you define a variable in the way done below?
+        resultMins, resultSecs = time_translator(zeroth_millisec,final_millisec)
+        document.getElementById("congratulations_text").innerText = `🎊📰 Congratulations! 📰🎊 \n ⌛ Time: ${resultMins}:${resultSecs} ⌛`
+        createsLink(resultMins)
+        document.getElementById('share_button').style.visibility = 'visible';
     }  
 }
 
@@ -80,37 +89,39 @@ function time_translator(millisx_start, millisx_end){
     
     difference = millisx_end - millisx_start
 
-    var result_hrs = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var result_mins = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    var result_secs = Math.floor((difference % (1000 * 60)) / 1000);
+    // Other variable added in case of future need
+    var hrs_taken = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var mins_taken = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    var secs_taken = Math.floor((difference % (1000 * 60)) / 1000);
 
-    return result_mins
+    return mins_taken, secs_taken
+}
+function createsLink(time_taken){
+
+    let mins_stamp = "" 
+    
+    if (time_taken <2){
+        mins_stamp = "<2"
+    }
+
+    if (time_taken >= 2 && time_taken <4){
+        mins_stamp = "<4"
+    }
+    if (time_taken >= 4 && time_taken <6){
+        mins_stamp = "<6"
+    }
+    if (time_taken >= 6 && time_taken <8){
+        mins_stamp = "<8"
+    }
+    if (time_taken >= 8 && time_taken <10){
+        mins_stamp = "<10"
+    }
+    if (time_taken >10){
+        mins_stamp = ">10"
+    }
+    link = `🟩📰⌛${mins_stamp}\n http://localhost:8000/`
 }
 
 function shareLink(){
-    var result_link = "fill in"
-
-    if (result_mins <5){
-        result_link = result_link + "⌛<5"
-    }
-
-    if (result_mins <= 5 && result_mins <7){
-        result_link = result_link + "⌛<7"
-    }
-    if (result_mins <= 7 && result_mins <11){
-        result_link = result_link + "⌛<10"
-    }
-    if (result_mins <= 11 && result_mins <15){
-        result_link = result_link + "⌛<15"
-    }
- /*     Less than 20 minutes.
-    Greater than 20 minutes */
-
-
-
-    result_link.select();
-    result_link.setSelectionRange(0, 99999);
-
-    navigator.clipboard.writeText(result_link)
-    
+    navigator.clipboard.writeText(link)
 }
