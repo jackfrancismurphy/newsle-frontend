@@ -40,7 +40,7 @@ function onSubmit(){
 
 // Functions otherwise
 
-function getHeadlines(headlines_json){
+/* function getHeadlines(headlines_json){
     document.getElementById("presented_headline").innerText = headlines_json.scrambled_headline
     headlineArray = headlines_json.headline.split(" ")
     headlineArrayLower = headlines_json.headline.toLowerCase().split(" ")
@@ -48,6 +48,14 @@ function getHeadlines(headlines_json){
     GUESS_BUTTON.disabled = false;
 
     console.log(headlines_json.headline);
+} */
+function getHeadlines(headlines_json){
+    document.getElementById("presented_headline").innerText = "ot ot ot"
+    headlineArray = "to to to".split()
+    headlineArrayLower = "to to to".toLowerCase().split()
+    console.log(headlineArray)
+    GUESS_BOX.disabled = false;
+    GUESS_BUTTON.disabled = false;
 }
 
 function checkGuess() {
