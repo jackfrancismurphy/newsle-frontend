@@ -40,7 +40,7 @@ function onSubmit(){
 
 // Functions otherwise
 
-/* function getHeadlines(headlines_json){
+function getHeadlines(headlines_json){
     document.getElementById("presented_headline").innerText = headlines_json.scrambled_headline
     headlineArray = headlines_json.headline.split(" ")
     headlineArrayLower = headlines_json.headline.toLowerCase().split(" ")
@@ -48,21 +48,15 @@ function onSubmit(){
     GUESS_BUTTON.disabled = false;
 
     console.log(headlines_json.headline);
-} */
-function getHeadlines(headlines_json){
-    document.getElementById("presented_headline").innerText = "ot ot ot"
-    headlineArray = "to to to".split()
-    headlineArrayLower = "to to to".toLowerCase().split()
-    console.log(headlineArray)
-    GUESS_BOX.disabled = false;
-    GUESS_BUTTON.disabled = false;
 }
 
 function checkGuess() {
     const PLAYER_GUESS = GUESS_BOX.value.toLowerCase().trim();
 
     if (headlineArrayLower.includes(PLAYER_GUESS)){
+        console.log(headlineArrayLower)
         wordIndexes = getWordIndexes(headlineArrayLower,PLAYER_GUESS)
+        console.log(wordIndexes)
         var updatedHeadline = document.getElementById("presented_headline").innerText.split(" ")
         for (i in wordIndexes){
             updatedHeadline[i] = headlineArray[i]
@@ -79,10 +73,10 @@ function checkGuess() {
 
 function getWordIndexes (headlineArray, guess){
     var indexes = [], i = -1;
-    while (i = headlineArray.indexOf(guess, i+1) != -1){
+    while (headlineArray.indexOf(guess, i+=1) != -1){
         indexes.push(i)
-        return indexes;
     }
+    return indexes;
 }
   
 function winningConditions(){
