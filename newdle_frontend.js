@@ -46,39 +46,36 @@ function getHeadlines(headlines_json){
     headlineArrayLower = headlines_json.headline.toLowerCase().split(" ")
     GUESS_BOX.disabled = false;
     GUESS_BUTTON.disabled = false;
-
-    console.log(headlines_json.headline);
 }
 
 function checkGuess() {
     const PLAYER_GUESS = GUESS_BOX.value.toLowerCase().trim();
 
     if (headlineArrayLower.includes(PLAYER_GUESS)){
-        console.log(headlineArrayLower)
         wordIndexes = getWordIndexes(headlineArrayLower,PLAYER_GUESS)
-        console.log(wordIndexes)
         var updatedHeadline = document.getElementById("presented_headline").innerText.split(" ")
-        for (i in wordIndexes){
-            updatedHeadline[i] = headlineArray[i]
-        }
-
-        // below we are changing the inner text of the <h2> element on the html file.  
+    for (i of wordIndexes){
+        console.log(i)
+        updatedHeadline[i] = headlineArray[i]
+    }  
         document.getElementById("presented_headline").innerText = updatedHeadline.join(" ")
 
     } else {
         RESULT_PTAG.innerText = "❌"
-        // Might need to set some attribute where this becomes visible, rather than setting the text
+
     }
 }
 
 function getWordIndexes (headlineArray, guess){
-    var indexes = [], i = -1;
-    while (headlineArray.indexOf(guess, i+=1) != -1){
-        indexes.push(i)
+    var indexes = [];
+    for (var i = 0; i < headlineArray.length; i++){
+        if(headlineArray[i] == guess){
+            indexes.push(i)
+        }
     }
-    return indexes;
+    return indexes
 }
-  
+
 function winningConditions(){
     if (document.getElementById("presented_headline").innerText === headlineArray.join(" ")){
         const final_millisec = new Date().getTime()
