@@ -40,6 +40,12 @@ function onSubmit(){
 
 // Functions otherwise
 
+GUESS_BOX.addEventListener("keypress", function(event){
+    if (event.key === "Enter"){
+        document.getElementById("submit_button").click();
+    }
+});
+
 function getHeadlines(headlines_json){
     document.getElementById("presented_headline").innerText = headlines_json.scrambled_headline
     headlineArray = headlines_json.headline.split(" ")
@@ -54,10 +60,8 @@ function checkGuess() {
     if (headlineArrayLower.includes(PLAYER_GUESS)){
         wordIndexes = getWordIndexes(headlineArrayLower,PLAYER_GUESS)
         var updatedHeadline = document.getElementById("presented_headline").innerText.split(" ")
-    for (i of wordIndexes){
-        console.log(i)
-        updatedHeadline[i] = headlineArray[i]
-    }  
+        for (i of wordIndexes){
+            updatedHeadline[i] = headlineArray[i]}  
         document.getElementById("presented_headline").innerText = updatedHeadline.join(" ")
 
     } else {
