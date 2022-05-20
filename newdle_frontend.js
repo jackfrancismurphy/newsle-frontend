@@ -17,19 +17,22 @@ const GUESS_BUTTON = document.getElementById("submit_button")
 
 const zeroth_millisec = new Date().getTime()
 
-/* Making boxes unavailable */
+// Appearance functions and lines
 
 GUESS_BOX.disabled = true;
 GUESS_BUTTON.disabled = true;
 
+function instructionsAppear(){
+    document.getElementById("instructions_div").style.visibility = "visible";
+}
+
+function instructionsDisappear(){
+    document.getElementById("instructions_div").style.visibility = "hidden";
+}
 
 /* External values */
 
-/* fetch initiates the process of getting the information from the API
-.then(api_response) returns the promise of data from the URL. (It takes time to get the data)
-.then(json_response) returns the data in .json format (it takes time to get the data)
-Both retieving data and converting data takes time. That's why .then exists...
-it executes when the data has actually been procured/converted */ 
+ 
 fetch('http://localhost:5000/Game_info')
 .then(api_response => {return api_response.json()})
 .then(json_response => {
