@@ -7,6 +7,47 @@ body {
 
 
 /* Backgrounds */
+#instructions_div{
+    position: absolute;
+    height: 93vh;
+    width: 87vw;
+    top: 4vh;
+    left: 6vw;
+    background: rgb(125, 159, 156);
+    z-index: 3;
+    visibility: hidden;
+}
+
+#exit_button{
+    max-width: 5vw;
+    position: relative;
+    top: -5vh;
+    left: 77vw;
+    
+}
+
+#instructions_headline{
+    font-weight: bold;
+    font-size: 2rem;
+    position: absolute;
+    text-align: center;
+    left: 21vw;
+}
+
+#instuctions {
+  position: absolute;
+  top: 14vh;
+  padding: 6vw;
+  font-size: 1.5rem;
+}
+
+
+#example{
+  position: relative;
+  left: 25vw;
+  top: 70vh;
+}
+
 #first_background{
     position: absolute;
     top: 0px;
@@ -31,19 +72,21 @@ body {
     position: relative;
     height: 93vh;
     width: 87vw;
-    top: 2vh;
+    top: 4vh;
     left: 6vw;
     background:rgb(94, 82, 194);
-    z-index: -1;
+    z-index: 2;
     text-align: center;
 
 }
 
 /* Information in foreground */
 
-#instruction{
-    text-align: right;
-    z-index: 0;
+#instructions_button{
+    max-width: 3vh;
+    position: relative;
+    left: 36vw;
+    top: 1.5vh;
 }
 
 #heading{
@@ -65,7 +108,6 @@ body {
     font-size: 7vw;
     padding: 4vw;
     text-align: justify;
-    z-index: 0;
 }
 #guess_box{
     position: relative;
