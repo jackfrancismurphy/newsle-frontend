@@ -3,6 +3,11 @@
 let headlineArray = []
 
 let headlineArrayLower = [] 
+let link = ""
+
+let resultMins = 0
+
+let resultSecs = 0
 
 const RESULT_PTAG = document.getElementById("cross")
 
@@ -44,10 +49,11 @@ function onSubmit(){
 // Functions otherwise
 
 GUESS_BOX.addEventListener("keypress", function(event){
-    if (event.key === "Enter"){
-        document.getElementById("submit_button").click();
+        if (event.key === "Enter"){
+            onSubmit();
+        }
     }
-});
+);
 
 function getHeadlines(headlines_json){
     document.getElementById("presented_headline").innerText = headlines_json.scrambled_headline
@@ -65,6 +71,7 @@ function checkGuess() {
         var updatedHeadline = document.getElementById("presented_headline").innerText.split(" ")
         for (i of wordIndexes){
             updatedHeadline[i] = headlineArray[i]}  
+
         document.getElementById("presented_headline").innerText = updatedHeadline.join(" ")
 
     } else {
@@ -86,8 +93,10 @@ function getWordIndexes (headlineArray, guess){
 function winningConditions(){
     if (document.getElementById("presented_headline").innerText === headlineArray.join(" ")){
         const final_millisec = new Date().getTime()
-        document.getElementById("congratulations_text").innerText = `🎊📰 Congratulations! 📰🎊 \n Time: ${time_translator(zeroth_millisec,final_millisec)} minutes`
-        // var final_millisec = new Date().getTime(); Can you define a variable in the way done below?
+        resultMins, resultSecs = time_translator(zeroth_millisec,final_millisec)
+        document.getElementById("congratulations_text").innerText = `🎊📰 Congratulations! 📰🎊 \n ⌛ Time: ${resultMins}:${resultSecs} ⌛`
+        createsLink(resultMins)
+        document.getElementById('share_button').style.visibility = 'visible';
     }  
 }
 
@@ -95,9 +104,39 @@ function time_translator(millisx_start, millisx_end){
     
     difference = millisx_end - millisx_start
 
-    var result_hrs = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var result_mins = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    var result_secs = Math.floor((difference % (1000 * 60)) / 1000);
+    // Other variable added in case of future need
+    var hrs_taken = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var mins_taken = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    var secs_taken = Math.floor((difference % (1000 * 60)) / 1000);
 
-    return result_mins
+    return mins_taken, secs_taken
+}
+function createsLink(time_taken){
+
+    let mins_stamp = "" 
+    
+    if (time_taken <2){
+        mins_stamp = "<2"
+    }
+
+    if (time_taken >= 2 && time_taken <4){
+        mins_stamp = "<4"
+    }
+    if (time_taken >= 4 && time_taken <6){
+        mins_stamp = "<6"
+    }
+    if (time_taken >= 6 && time_taken <8){
+        mins_stamp = "<8"
+    }
+    if (time_taken >= 8 && time_taken <10){
+        mins_stamp = "<10"
+    }
+    if (time_taken >10){
+        mins_stamp = ">10"
+    }
+    link = `🟩📰⌛${mins_stamp}\n http://localhost:8000/`
+}
+
+function shareLink(){
+    navigator.clipboard.writeText(link)
 }
