@@ -70,9 +70,8 @@ function checkGuess() {
         wordIndexes = getWordIndexes(headlineArrayLower,PLAYER_GUESS)
         var updatedHeadline = document.getElementById("presented_headline").innerText.split(" ")
         for (i of wordIndexes){
-            console.log(i)
-            updatedHeadline[i] = headlineArray[i]
-        }  
+            updatedHeadline[i] = headlineArray[i]}  
+
         document.getElementById("presented_headline").innerText = updatedHeadline.join(" ")
 
     } else {
