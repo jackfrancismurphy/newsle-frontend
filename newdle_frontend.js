@@ -13,14 +13,11 @@ const RESULT_PTAG = document.getElementById("cross")
 
 const GUESS_BOX = document.getElementById("guess_box")
 
-const GUESS_BUTTON = document.getElementById("submit_button")
-
 const zeroth_millisec = new Date().getTime()
 
 // Appearance functions and lines
 
 GUESS_BOX.disabled = true;
-GUESS_BUTTON.disabled = true;
 
 function instructionsAppear(){
     document.getElementById("instructions_div").style.visibility = "visible";
@@ -60,7 +57,6 @@ function getHeadlines(headlines_json){
     headlineArray = headlines_json.headline.split(" ")
     headlineArrayLower = headlines_json.headline.toLowerCase().split(" ")
     GUESS_BOX.disabled = false;
-    GUESS_BUTTON.disabled = false;
 }
 
 function checkGuess() {
