@@ -23,6 +23,7 @@ function instructionsAppear(){
     document.getElementById("instructions_div").style.visibility = "visible";
 }
 
+
 function instructionsDisappear(){
     document.getElementById("instructions_div").style.visibility = "hidden";
 }
@@ -43,14 +44,9 @@ function onSubmit(){
     winningConditions()
 }
 
+
 // Functions otherwise
 
-GUESS_BOX.addEventListener("keypress", function(event){
-        if (event.key === "Enter"){
-            onSubmit();
-        }
-    }
-);
 
 function getHeadlines(headlines_json){
     document.getElementById("presented_headline").innerText = headlines_json.scrambled_headline
@@ -58,6 +54,7 @@ function getHeadlines(headlines_json){
     headlineArrayLower = headlines_json.headline.toLowerCase().split(" ")
     GUESS_BOX.disabled = false;
 }
+
 
 function checkGuess() {
     const PLAYER_GUESS = GUESS_BOX.value.toLowerCase().trim();

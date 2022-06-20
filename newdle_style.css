@@ -119,6 +119,57 @@ body {
 }
 #submit_button{
     font-size: 6vw;
+      align-items: center;
+  background-color: #fff;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-family: Inter,sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  height: 4vh;
+  justify-content: center;
+  letter-spacing: -.8px;
+  line-height: 24px;
+  
+  outline: 0;
+  padding: 0 17px;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+    width: 16vw;
+    left: 14vh;
+    position: relative;
+    bottom: 5.7vh;
+}
+
+#submit_button:focus {
+  color: #171e29;
+}
+
+#submit_button:hover {
+  border-color: #06f;
+  color: #06f;
+  fill: #06f;
+}
+
+#submit_button:active {
+  border-color: #06f;
+  color: #06f;
+  fill: #06f;
+}
+
+@media (min-width: 768px) {
+  #submit_button {
+    min-width: 170px;
+  }
+}
 }
 #share_button{
     visibility: hidden;
