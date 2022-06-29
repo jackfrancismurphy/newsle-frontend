@@ -60,6 +60,7 @@ function checkGuess() {
     const PLAYER_GUESS = GUESS_BOX.value.toLowerCase().trim();
 
     if (headlineArrayLower.includes(PLAYER_GUESS)){
+        RESULT_PTAG.innerText = ""
         wordIndexes = getWordIndexes(headlineArrayLower,PLAYER_GUESS)
         var updatedHeadline = document.getElementById("presented_headline").innerText.split(" ")
         for (i of wordIndexes){
