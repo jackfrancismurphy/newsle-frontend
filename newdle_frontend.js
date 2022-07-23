@@ -5,10 +5,6 @@ let headlineArray = []
 let headlineArrayLower = [] 
 let link = ""
 
-let resultMins = 0
-
-let resultSecs = 0
-
 const RESULT_PTAG = document.getElementById("cross")
 
 const GUESS_BOX = document.getElementById("guess_box")
@@ -87,8 +83,8 @@ function getWordIndexes (headlineArray, guess){
 function winningConditions(){
     if (document.getElementById("presented_headline").innerText === headlineArray.join(" ")){
         const final_millisec = new Date().getTime()
-        resultMins, resultSecs = time_translator(zeroth_millisec,final_millisec)
-        document.getElementById("congratulations_text").innerText = `🎊📰 Congratulations! 📰🎊 \n ⌛ Time: ${resultMins}:${resultSecs} ⌛`
+        const time_results = time_translator(zeroth_millisec,final_millisec)
+        document.getElementById("congratulations_text").innerText = `🎊📰 Congratulations! 📰🎊 \n ⌛ Time: ${time_results[0]}:${time_results[1]} ⌛`
         createsLink(resultMins)
         document.getElementById('share_button').style.visibility = 'visible';
     }  
@@ -103,7 +99,7 @@ function time_translator(millisx_start, millisx_end){
     var mins_taken = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     var secs_taken = Math.floor((difference % (1000 * 60)) / 1000);
 
-    return mins_taken, secs_taken
+    return [mins_taken, secs_taken]
 }
 function createsLink(time_taken){
 
