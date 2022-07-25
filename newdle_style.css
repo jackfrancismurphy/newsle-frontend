@@ -1,10 +1,8 @@
 body {
-    position: absolute;
-    min-height: 100vh;
     margin: 0px;
-    z-index: -20;
-  }
-
+    background:slategray;
+    background-image: linear-gradient(to left, slategray 45%, white);
+}
 
 /* Backgrounds */
 #instructions_div{
@@ -14,7 +12,7 @@ body {
     top: 4vh;
     left: 6vw;
     background: rgb(125, 159, 156);
-    z-index: 3;
+    z-index: 1;
     visibility: hidden;
 }
 
@@ -22,8 +20,7 @@ body {
     max-width: 5vw;
     position: absolute;
     top: 2vh;
-    left: 77vw;
-    
+    left: 77vw; 
 }
 
 #instructions_headline{
@@ -41,32 +38,11 @@ body {
   font-size: 1.5rem;
 }
 
-
 #example{
   position: relative;
   left: 25vw;
   top: 10vh;
   font-size: 1rem;
-}
-
-#first_background{
-    position: absolute;
-    top: 0px;
-    left: 0;
-    bottom: 0px;
-    right: 0px;
-    background:slategray;
-    z-index: -3;
-}
-
-#second_background{
-    position: absolute;
-    background:black;
-    top: 2vh;
-    height: 97vh;
-    width: 94vw;
-    left: 2vw;
-    z-index: -2;
 }
 
 #foreground{
@@ -78,7 +54,9 @@ body {
     background:rgb(94, 82, 194);
     z-index: 2;
     text-align: center;
-
+    border-color: black;
+    border-width: 2vw;
+    border-style: solid;
 }
 
 /* Information in foreground */
@@ -108,7 +86,7 @@ body {
     line-height: 8vh;
     font-size: 7vw;
     padding: 4vw;
-    text-align: justify;
+    text-align: center;
 }
 #guess_box{
     position: relative;
@@ -120,30 +98,29 @@ body {
 }
 #submit_button{
     font-size: 6vw;
-      align-items: center;
-  background-color: #fff;
-  border: 2px solid #000;
-  box-sizing: border-box;
-  color: #000;
-  cursor: pointer;
-  display: inline-flex;
-  fill: #000;
-  font-family: Inter,sans-serif;
-  font-size: 0.9rem;
-  font-weight: 400;
-  height: 4vh;
-  justify-content: center;
-  letter-spacing: -.8px;
-  line-height: 24px;
-  
-  outline: 0;
-  padding: 0 17px;
-  text-align: center;
-  text-decoration: none;
-  transition: all .3s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #000;
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    display: inline-flex;
+    fill: #000;
+    font-family: Inter,sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    height: 4vh;
+    justify-content: center;
+    letter-spacing: -.8px;
+    line-height: 24px;
+    outline: 0;
+    padding: 0 17px;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
     width: 16vw;
     left: 14vh;
     position: relative;
