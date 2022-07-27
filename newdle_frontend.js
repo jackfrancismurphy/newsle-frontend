@@ -85,7 +85,7 @@ function winningConditions(){
         const final_millisec = new Date().getTime()
         const time_results = time_translator(zeroth_millisec,final_millisec)
         document.getElementById("congratulations_text").innerText = `🎊📰 Congratulations! 📰🎊 \n ⌛ Time: ${time_results[0]}:${time_results[1]} ⌛`
-        createsLink(resultMins)
+        createsLink(time_results[0])
         document.getElementById('share_button').style.visibility = 'visible';
     }  
 }
@@ -101,6 +101,7 @@ function time_translator(millisx_start, millisx_end){
 
     return [mins_taken, secs_taken]
 }
+
 function createsLink(time_taken){
 
     let mins_stamp = "" 
@@ -108,20 +109,19 @@ function createsLink(time_taken){
     if (time_taken <2){
         mins_stamp = "<2"
     }
-
-    if (time_taken >= 2 && time_taken <4){
+    else if (time_taken <4){
         mins_stamp = "<4"
     }
-    if (time_taken >= 4 && time_taken <6){
+    else if (time_taken <6){
         mins_stamp = "<6"
     }
-    if (time_taken >= 6 && time_taken <8){
+    else if (time_taken <8){
         mins_stamp = "<8"
     }
-    if (time_taken >= 8 && time_taken <10){
+    else if (time_taken <10){
         mins_stamp = "<10"
     }
-    if (time_taken >10){
+    else {
         mins_stamp = ">10"
     }
     link = `🟩📰⌛${mins_stamp}\n http://localhost:8000/`
