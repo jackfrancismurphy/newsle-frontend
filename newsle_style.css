@@ -35,14 +35,13 @@ body {
 #instuctions {
   position: relative;
   padding: 6vw;
-  font-size: 4rem;
+  font-size: 1.6rem;
 }
 
 #example{
   position: relative;
-  align-content: center;
-  left: 17vw;
-  font-size: 4rem;
+  text-align: center;
+  font-size: 2rem;
 }
 
 /* Foreground containing game display and functionality  */
@@ -55,7 +54,7 @@ body {
   left: 4.5vw;
   background:rgb(94, 82, 194);
   z-index: 2;
-  text-align: center;
+  /*! text-align: center; */
   border-color: black;
   border-width: 2vw;
   border-style: solid;
@@ -67,14 +66,14 @@ body {
 #instructions_button{
   max-width: 5vh;
   position: relative;
-  left: 36vw;
+  left: 73vw;
   top: 1.5vh;
 }
 
 #heading{
   letter-spacing: 3vw;
   font-size: 13vw;
-  text-align:inherit;
+  text-align:center;
   position: relative;
   left: 0vw;
   z-index: 0;
@@ -109,27 +108,28 @@ body {
   z-index: 0;
 }
 #submit_button{
-  position: absolute;
+  position: relative;
   font-size: 4vw;
-  right: 0.5vh;
-  top: 0.5vh;
-  align-content: center;
-  justify-content: center;
+  right: -71.5vw;
   border: 2px solid #000;
-  padding: 0 17px;
-  align-items: center;
-  border: 2px solid #000;
-  
+  border-top-width: 2px;
+  border-top-width: 2px;
+  padding-bottom: 19px;
+  padding-left: 7px;
+  padding-top: 19px;
+  padding-right: 7px;
 }
 
 #share_button{
   visibility: hidden;
 }
 #cross{
-  position: absolute;
+  position: relative;
   font-size: 200%;
-  left: 12vw;
-  top: -1.3vh;
+  width: 10vw;
+  height: 5vh;
+  bottom: 10vh;
+  left: 4vw;
   z-index: 2;
   visibility: visible;
 }
