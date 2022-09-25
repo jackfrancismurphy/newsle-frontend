@@ -3,6 +3,7 @@
 let headlineArray = []
 
 let headlineArrayLower = [] 
+
 let link = ""
 
 const RESULT_PTAG = document.getElementById("cross")
@@ -86,7 +87,7 @@ function winningConditions(){
         const time_results = time_translator(zeroth_millisec,final_millisec)
         document.getElementById("congratulations_text").innerText = `🎊📰 Congratulations! 📰🎊 \n ⌛ Time: ${time_results[0]}:${time_results[1]} ⌛`
         createsLink(time_results[0])
-        document.getElementById('share_button').style.visibility = 'visible';
+        // document.getElementById('share_button').style.visibility = 'visible' **AWAITING PR**;
     }  
 }
 

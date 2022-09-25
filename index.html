@@ -2,42 +2,41 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href = "newdle_style.css">
+<link rel="stylesheet" href = "newsle_style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Newdle</title>
+    <title>Newsle</title>
 </head>
 <body>
     <!-- objects for background -->
 
     <div id="instructions_div">
         <p id= "instructions_headline">Instructions</p>
-        <p id="instuctions">Today's headline is presented to you in a scrambled form 🧩 You must unscramble the headline word by word, using the box below 📩 There is no way to fail this game, however, you are being timed ⏳, and your score will be presented to you upon completion 🥇 </p>
+        <p id="instuctions">Today's headline is presented to you in a scrambled form 🧩 You must unscramble the headline word by word, using the box below 📩 There is no way to fail this game, however, you are being timed ⏳, and your score will be presented upon completion 🥇 </p>
         <p id="example"> mlexeap = example</p>
         <img src = exit.png  id="exit_button" onclick="instructionsDisappear()"/>
 
 
     </div>  
-    <div id="first_background"></div>
-    <div id="second_background"></div>
     <div id="foreground">
 
         <img src = question_mark.png  id="instructions_button" onclick="instructionsAppear()"/>
-        <h1 id="heading">Newdle</h1>
-        <p id= "congratulations_text" style="text-align:center"> </p>
+        <h1 id="heading">Newsle</h1>
 
         <h2 id="presented_headline"> </h2>
         <div id="input_and_cross">
         <input type="text" id="guess_box" name="guess"><br><br>
-        <button type="button" id="submit_button" onclick="onSubmit()">Guess</button> 
+        <button type="button" id="submit_button" onclick="onSubmit()">Guess</button>
+        <button type="button" id="share_button" onclick="shareLink()">Share</button> 
         <p id= "cross"></p>
         </div>
-        <button type="button" id="share_button" onclick="shareLink()">Share</button> 
+        <p id= "congratulations_text"> </p>
+         
 
 
 
 
     </div>
 
-<script src="newdle_frontend.js"></script> 
+<script src="newsle_frontend.js"></script> 
 </body>
 </html> 
