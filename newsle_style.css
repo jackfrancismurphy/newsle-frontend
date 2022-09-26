@@ -55,6 +55,7 @@ body {
   border-color: black;
   border-width: 2vw;
   border-style: solid;
+  padding: 0;
 }
 
 #instructions_button{
@@ -91,27 +92,47 @@ body {
 }
 
 #input_and_cross{
-  height: 10vh
+  height: 5vh
+}
+
+#container1{
+  float: left;
+  width: 17%;
+  height: 100%;
+  margin: 0;
+  padding: 1vw;
+  display: inline;
+}
+#container2{
+  float: left;
+  width: 59%;
+  height: 100%;
+  margin: 0;
+  padding: 1vw;
+  display: inline;
+}
+#container3{
+  float: left;
+  width: 17%;
+  height: 100%;
+  margin: 0;
+  padding: 1vw;
+  display: inline;
 }
 
 #guess_box{
   align-content: center;
   font-size: 1.5rem;
   text-align: center;
-  width: 50%;
-  height: 50%;
-  float: right;
   padding: 0;
-  margin: 0;
+  width: 97%;
+  height: 90%;
 }
 
 #submit_button{
-  margin-left: 1vh;
-  margin-right: 1vh;
-  font-size: 1.5rem;
   border: 2px solid #000;
-  height: 55%;
-  float: right;
+  height: 100%;
+  width: 100%;
 }
 
 #share_button{
@@ -119,11 +140,8 @@ body {
 }
 
 #cross{
-  font-size: 4vh;
+  font-size: 3.5vh;
   visibility: visible;
-  margin-top: auto;
-  margin-bottom: auto;
-  float: left;
-  margin-left: 2vh;
-  display: inline;
+  margin: 0;
+  padding: 0;
 }
