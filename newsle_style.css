@@ -1,5 +1,6 @@
 body {
   margin: 0px;
+  height: 95vh;
   background:slategray;
   background-image: linear-gradient(to left, slategray 45%, white);
 }
@@ -7,10 +8,10 @@ body {
 /* Backgrounds */
 #instructions_div{
   position: fixed;
-  height: 91.7vh;
-  width: 85%;
-  top: 4.5vh;
-  left: 7.35%;
+  height: 92vh;
+  width: 85.5%;
+  top: 3.8vh;
+  left: 7.3%;
   background: rgb(227, 226, 111);
   z-index: 3;
   visibility: hidden;
@@ -18,9 +19,9 @@ body {
 
 #exit_button{
   max-width: 5vw;
-  position: relative;
-  top: -81vh;
-  left: 77vw; 
+  position: fixed;
+  top: 6vh;
+  right: 10vw; 
 }
 
 /* Instructions headline, layered ontop  */
@@ -34,7 +35,7 @@ body {
 
 #instuctions {
   position: relative;
-  padding: 6vw;
+  padding: 8vw;
   font-size: 1.6rem;
 }
 
@@ -47,89 +48,82 @@ body {
 /* Foreground containing game display and functionality  */
 
 #foreground{
-  position: relative;
-  height: 93vh;
-  width: 87%;
-  top: 3vh;
-  left: 4.5vw;
+  height: 100%;
+  margin: 3vw;
   background:rgb(94, 82, 194);
-  z-index: 2;
   /*! text-align: center; */
   border-color: black;
   border-width: 2vw;
   border-style: solid;
+}
+
+#instructions_button{
+  max-width: 9vh;
+  margin: 3vw;
+  width: 10vw;
+  display: block;
+  float: right;
   position: relative;
 }
 
 /* Information in foreground */
 
-#instructions_button{
-  max-width: 5vh;
-  position: relative;
-  left: 73vw;
-  top: 1.5vh;
-}
-
 #heading{
+  clear: right;
+  margin: 0;
   letter-spacing: 3vw;
-  font-size: 13vw;
+  font-size: clamp(10vh, 10vh, 14vw);
   text-align:center;
-  position: relative;
-  left: 0vw;
-  z-index: 0;
+  display: block;
 }
 
 #congratulations_text{
   text-align: center;
-  font-size: 5vw;
+  font-size: 1.5rem;
   font-weight: bold;
   z-index: 0;
 }
+
 #presented_headline{
-  line-height: 8vh;
-  font-size: 7vw;
-  padding: 4vw;
+  font-size: clamp(4vh, 4vh, 7vw);
+  margin: 4vw;
   text-align: center;
 }
 
 #input_and_cross{
-  position: relative;
-  height: 10vh;
+  height: 10vh
 }
 
 #guess_box{
-  position: absolute;
   align-content: center;
-  font-size: 200%;
+  font-size: 1.5rem;
   text-align: center;
-  left: 19vw;
-  width: 50vw;
-  height: 55px;
-  z-index: 0;
+  width: 50%;
+  height: 50%;
+  float: right;
+  padding: 0;
+  margin: 0;
 }
+
 #submit_button{
-  position: relative;
-  font-size: 4vw;
-  right: -71.5vw;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  font-size: 1.5rem;
   border: 2px solid #000;
-  border-top-width: 2px;
-  border-top-width: 2px;
-  padding-bottom: 19px;
-  padding-left: 7px;
-  padding-top: 19px;
-  padding-right: 7px;
+  height: 55%;
+  float: right;
 }
 
 #share_button{
   visibility: hidden;
 }
+
 #cross{
-  position: relative;
-  font-size: 200%;
-  width: 10vw;
-  height: 5vh;
-  bottom: 10vh;
-  left: 4vw;
-  z-index: 2;
+  font-size: 4vh;
   visibility: visible;
+  margin-top: auto;
+  margin-bottom: auto;
+  float: left;
+  margin-left: 2vh;
+  display: inline;
 }
