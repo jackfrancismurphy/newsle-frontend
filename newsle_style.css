@@ -9,9 +9,9 @@ body {
 #instructions_div{
   position: fixed;
   height: 92vh;
-  width: 85.5%;
+  width: 86.5%;
   top: 3.8vh;
-  left: 7.3%;
+  left: 6.6%;
   background: rgb(227, 226, 111);
   z-index: 3;
   visibility: hidden;
@@ -28,7 +28,7 @@ body {
 
 #instructions_headline{
   font-weight: bold;
-  font-size: 4rem;
+  font-size: 5vh;
   text-align: center;
   left: 21vw;
 }
@@ -36,7 +36,9 @@ body {
 #instuctions {
   position: relative;
   padding: 8vw;
-  font-size: 1.6rem;
+  font-size: 3vh;
+  font-size-adjust: cap-height;
+  
 }
 
 #example{
