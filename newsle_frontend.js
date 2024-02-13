@@ -28,7 +28,7 @@ function instructionsDisappear(){
 /* External values */
 
  
-fetch('http://localhost:5000/Game_info')
+fetch('https://newsle-backend-c6c785fcf3f1.herokuapp.com/Game_info')
 .then(api_response => {return api_response.json()})
 .then(json_response => {
     getHeadlines(json_response)
