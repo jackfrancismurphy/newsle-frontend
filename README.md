@@ -2,7 +2,7 @@
 
 To run, run "python -m http.server" from the root of the repo.
 
-run the newdle.api on the back end, too.
+run the newsle.api on the back end, too.
 
 ## Current Address 
 
