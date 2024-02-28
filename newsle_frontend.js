@@ -48,6 +48,8 @@ function onSubmit(){
 
 function getHeadlines(headlines_json){
 
+    headlines_json.replace('‘', "'").replace('’', "'").replace('“',"\"").replace('”',"\"")
+    
     document.getElementById("presented_headline").innerText = headlines_json.scrambled_headline
     headlineArray = headlines_json.headline.split(" ")
     headlineArrayLower = headlines_json.headline.toLowerCase().split(" ")
