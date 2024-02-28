@@ -48,9 +48,13 @@ function onSubmit(){
 
 function getHeadlines(headlines_json){
 
-    for (sentence in headlines_json){
-        sentence.replace('‘', "'").replace('’', "'").replace('“',"\"").replace('”',"\"")
-    } 
+    
+    // This line of code replaces the special quotes with normal quotes
+    // Normal quotes which the player has access to on their phone/ laptop
+    
+    headlines_json.headline = headlines_json.headline.replace('‘', "'").replace('’', "'").replace('“',"\"").replace('”', "\"")
+    headlines_json.scrambled_headline =  headlines_json.scrambled_headline.replace('‘', "'").replace('’', "'").replace('“',"\"").replace('”', "\"")
+
     
     document.getElementById("presented_headline").innerText = headlines_json.scrambled_headline
     headlineArray = headlines_json.headline.split(" ")
