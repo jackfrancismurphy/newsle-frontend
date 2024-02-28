@@ -37,26 +37,41 @@ fetch('https://newsle-backend-c6c785fcf3f1.herokuapp.com/Game_info')
 // Main function
 
 function onSubmit(){
+
     checkGuess()
     winningConditions()
 }
 
 
-// Functions otherwise
+// Check Guess + helper functions
 
 
 function getHeadlines(headlines_json){
+
     document.getElementById("presented_headline").innerText = headlines_json.scrambled_headline
     headlineArray = headlines_json.headline.split(" ")
     headlineArrayLower = headlines_json.headline.toLowerCase().split(" ")
     GUESS_BOX.disabled = false;
 }
 
+function getWordIndexes (headlineArray, guess){
+
+    var indexes = [];
+    for (var i = 0; i < headlineArray.length; i++){
+        if(headlineArray[i] == guess){
+            indexes.push(i)
+        }
+    }
+    return indexes
+}
+
 
 function checkGuess() {
+
     const PLAYER_GUESS = GUESS_BOX.value.toLowerCase().trim();
 
     if (headlineArrayLower.includes(PLAYER_GUESS)){
+
         RESULT_PTAG.innerText = ""
         wordIndexes = getWordIndexes(headlineArrayLower,PLAYER_GUESS)
         var updatedHeadline = document.getElementById("presented_headline").innerText.split(" ")
@@ -67,29 +82,10 @@ function checkGuess() {
 
     } else {
         RESULT_PTAG.innerText = "❌"
-
     }
 }
 
-function getWordIndexes (headlineArray, guess){
-    var indexes = [];
-    for (var i = 0; i < headlineArray.length; i++){
-        if(headlineArray[i] == guess){
-            indexes.push(i)
-        }
-    }
-    return indexes
-}
-
-function winningConditions(){
-    if (document.getElementById("presented_headline").innerText === headlineArray.join(" ")){
-        const final_millisec = new Date().getTime()
-        const time_results = time_translator(zeroth_millisec,final_millisec)
-        document.getElementById("congratulations_text").innerText = `🎊📰 Congratulations! 📰🎊 \n ⌛ Time: ${time_results[0]}:${time_results[1]} ⌛`
-        createsLink(time_results[0])
-        // document.getElementById('share_button').style.visibility = 'visible' **AWAITING PR**;
-    }  
-}
+// Winning Conditions + helper functions
 
 function time_translator(millisx_start, millisx_end){
     
@@ -102,6 +98,19 @@ function time_translator(millisx_start, millisx_end){
 
     return [mins_taken, secs_taken]
 }
+
+
+function winningConditions(){
+
+    if (document.getElementById("presented_headline").innerText === headlineArray.join(" ")){
+        const final_millisec = new Date().getTime()
+        const time_results = time_translator(zeroth_millisec,final_millisec)
+        document.getElementById("congratulations_text").innerText = `🎊📰 Congratulations! 📰🎊 \n ⌛ Time: ${time_results[0]}:${time_results[1]} ⌛`
+        createsLink(time_results[0])
+        // document.getElementById('share_button').style.visibility = 'visible' **AWAITING PR**;
+    }  
+}
+
 
 function createsLink(time_taken){
 
@@ -125,7 +134,7 @@ function createsLink(time_taken){
     else {
         mins_stamp = ">10"
     }
-    link = `🟩📰⌛${mins_stamp}\n http://localhost:8000/`
+    link = `🟩📰⌛${mins_stamp}\n https://jackfrancismurphy.github.io/newsle-frontend/`
 }
 
 function shareLink(){
