@@ -29,10 +29,18 @@ function instructionsDisappear(){
 
  
 fetch('https://newsle-backend-c6c785fcf3f1.herokuapp.com/Game_info')
-.then(api_response => {return api_response.json()})
+.then(api_response => api_response.json())
+.catch(() => {
+    // Fallback JSON in case of a network error
+    return { 
+        "headline": "Earth invaded by Martians", 
+        "scrambled_headline": "thEar deidvna by asrntaiM" 
+    };
+})
 .then(json_response => {
-    getHeadlines(json_response)
+    getHeadlines(json_response);
 });
+
 
 // Main function
 
@@ -48,13 +56,14 @@ function onSubmit(){
 
 function getHeadlines(headlines_json){
 
-    
+    for (headlines in headlines_json){
+        headlines.replace('‘', "'").replace('’', "'").replace('“',"\"").replace('”',"\"")
+    }
     // This line of code replaces the special quotes with normal quotes
     // Normal quotes which the player has access to on their phone/ laptop
     
     headlines_json.headline = headlines_json.headline.replace('‘', "'").replace('’', "'").replace('“',"\"").replace('”', "\"")
     headlines_json.scrambled_headline =  headlines_json.scrambled_headline.replace('‘', "'").replace('’', "'").replace('“',"\"").replace('”', "\"")
-
     
     document.getElementById("presented_headline").innerText = headlines_json.scrambled_headline
     headlineArray = headlines_json.headline.split(" ")
